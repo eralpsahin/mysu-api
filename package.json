@@ -19,7 +19,6 @@
     "postcoverage": "open-cli coverage/lcov-report/index.html",
     "lint": "eslint .",
     "docs": "documentation readme src --section=API",
-    "postdocs": "git add README.md",
     "clean": "rimraf dist",
     "prebuild": "npm run docs && npm run clean",
     "build": "babel src -d dist",
@@ -41,7 +40,10 @@
   "keywords": [
     "generator-nod"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "axios": "0.19.0",
+    "cheerio": "1.0.0-rc.3"
+  },
   "devDependencies": {
     "@babel/cli": "7.4.4",
     "@babel/core": "7.4.5",
