@@ -1,6 +1,6 @@
-import sayHello from "../src";
+import mysu from '../src';
 
-test("sayHello", () => {
-  expect(sayHello()).toBe("Hello, Haz!");
-  expect(sayHello("foo")).toBe("Hello, foo!");
+test('Failed Authentication', async () => {
+  expect(await mysu.authenticate()).toBe(1);
+  expect(await mysu.authenticate('test', 'test')).toBe(1);
 });
