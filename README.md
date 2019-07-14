@@ -1,13 +1,13 @@
 ## Features
 
--   [**Babel**](https://babeljs.io/) - Write next generation JavaScript today.
--   [**Jest**](https://facebook.github.io/jest) - JavaScript testing framework used by Facebook.
--   [**ESLint**](http://eslint.org/) - Make sure you are writing a quality code.
--   [**Prettier**](https://prettier.io/) - Enforces a consistent style by parsing your code and re-printing it.
--   [**Flow**](https://flowtype.org/) - A static type checker for JavaScript used heavily within Facebook.
--   [**Travis CI**](https://travis-ci.org) - Automate tests and linting for every push or pull request.
--   [**Documentation**](http://documentation.js.org/) - A documentation system so good, you'll actually write documentation.
--   [**Standard Version**](https://github.com/conventional-changelog/standard-version) - Automate versioning and CHANGELOG generation.
+- [**Babel**](https://babeljs.io/) - Write next generation JavaScript today.
+- [**Jest**](https://facebook.github.io/jest) - JavaScript testing framework used by Facebook.
+- [**ESLint**](http://eslint.org/) - Make sure you are writing a quality code.
+- [**Prettier**](https://prettier.io/) - Enforces a consistent style by parsing your code and re-printing it.
+- [**Flow**](https://flowtype.org/) - A static type checker for JavaScript used heavily within Facebook.
+- [**Travis CI**](https://travis-ci.org) - Automate tests and linting for every push or pull request.
+- [**Documentation**](http://documentation.js.org/) - A documentation system so good, you'll actually write documentation.
+- [**Standard Version**](https://github.com/conventional-changelog/standard-version) - Automate versioning and CHANGELOG generation.
 
 ## Install
 
@@ -54,20 +54,37 @@ It'll automatically run `test`, `lint`, `docs`, `build`, generate `CHANGELOG.md`
 
 #### Table of Contents
 
--   [authenticate](#authenticate)
-    -   [Parameters](#parameters)
+- [authenticate](#authenticate)
+  - [Parameters](#parameters)
+- [sucard](#sucard)
+  - [Parameters](#parameters-1)
+- [extractInformationFrom](#extractinformationfrom)
+  - [Parameters](#parameters-2)
 
 ### authenticate
 
 This function authenticates the user to
 MySU app.
 
+Server does not need authentication for other requests.
+Ultimately, authentication is not needed.
+
 #### Parameters
 
--   `username` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** SU-Net username
--   `password` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** SU-Net password
+- `username` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** SU-Net username
+- `password` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** SU-Net password
 
 Returns **[Number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Error code of the response
+
+### sucard
+
+This function retrieves SuCard transaction records from MySU.
+
+#### Parameters
+
+- `username` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** SU-Net username
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** SuCard transaction record object with `meals`, `transports`, `prints` keys.
 
 ## License
 
