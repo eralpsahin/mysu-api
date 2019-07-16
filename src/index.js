@@ -17,7 +17,8 @@ const bodyClose = `</soap:Body></soap:Envelope>`;
 const mysu = {
   authenticate: undefined,
   sucard: undefined,
-  courseSchedule: undefined
+  courseSchedule: undefined,
+  getPerson: undefined
 };
 
 const days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
@@ -166,6 +167,77 @@ mysu.courseSchedule = async username => {
       const allCourses = {};
       days.forEach(day => extractCourse($, day, allCourses));
       return allCourses;
+    }
+  });
+  return response.data;
+};
+
+/**
+ *
+ * @param {Cheerio} $ - Cheerio object with loaded XML.
+ * @returns {Object} Object containing all the people with username as key
+ * and name, birthday, photo, degree, program fields for the person.
+ */
+const extractPersonInfoFrom = $ => {
+  const ids = [];
+  const people = {};
+  $('email')
+    .children()
+    .each((i, elem) => {
+      let username = $(elem).text();
+      username = username.slice(0, username.indexOf('@'));
+      ids.push(username);
+      people[username] = {};
+    });
+
+  $('name')
+    .children()
+    .each((i, elem) => {
+      people[ids[i]].name = $(elem).text();
+    });
+
+  $('birthdayprefix')
+    .children()
+    .each((i, elem) => {
+      people[ids[i]].birthday = $(elem).text();
+    });
+  $('photo')
+    .children()
+    .each((i, elem) => {
+      people[ids[i]].photo = $(elem).text();
+    });
+  $('degree')
+    .children()
+    .each((i, elem) => {
+      people[ids[i]].degree = $(elem).text();
+    });
+  $('program')
+    .children()
+    .each((i, elem) => {
+      people[ids[i]].program = $(elem).text();
+    });
+  return people;
+};
+
+/**
+ * @param {String} search - Search string.
+ * @param {String} type - Peoples type: alumni - student - staff.
+ * @param {(string\|number)} [limit=""] - Limit the number of people returned.
+ * @param {(string\|number)} [start=0] - Return the people starting from start index.
+ */
+mysu.getPerson = async (search, type = 'student', limit = '', start = 0) => {
+  const body = `${bodyOpen}<people xmlns="http://tempuri.org/">
+            <code>su2013people</code><ou>staff</ou>
+            <lang>en</lang><like>
+            ${Buffer.from(search).toString('base64')}
+            </like><liketype>${type}</liketype><limit>${limit}</limit>
+            <more>${start}</more>
+            </people>${bodyClose}`;
+
+  const response = await instance.post('/people_v2.php', body, {
+    transformResponse: data => {
+      const $ = cheerio.load(data);
+      return extractPersonInfoFrom($);
     }
   });
   return response.data;
