@@ -27,3 +27,8 @@ test('Retrieve SuCard Transaction History', async () => {
   expected.toHaveProperty('transports');
   expected.toHaveProperty('prints');
 });
+
+test('Retrieve Course Schedule', async () => {
+  const expected = expect(await mysu.courseSchedule('eralpsahin'));
+  expected.toEqual({});
+});
