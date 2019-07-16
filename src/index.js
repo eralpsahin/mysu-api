@@ -50,7 +50,7 @@ mysu.authenticate = async (username, password) => {
 
 /**
  * Helper function for mysu.sucard(). Extracts `meals`, `transports`, and `prints` from the XML.
- *
+ * @private
  * @param {string} tag - Appropriate tag for record information.
  *
  * @returns {Array} Array of record object That contains `date`, `product`, `amount`, and `piece`.
@@ -129,6 +129,12 @@ mysu.sucard = async username => {
   return response.data;
 };
 
+/**
+ * @private
+ * @param {Cheerio} $ - Cheerio object with loaded XML.
+ * @param {String} day - Name of the day all lowercase.
+ * @param {*} allCourses - Object that stores all the courses.
+ */
 const extractCourse = ($, day, allCourses) => {
   $(day)
     .children('uniqueall')
@@ -173,7 +179,7 @@ mysu.courseSchedule = async username => {
 };
 
 /**
- *
+ * @private
  * @param {Cheerio} $ - Cheerio object with loaded XML.
  * @returns {Object} Object containing all the people with username as key
  * and name, birthday, photo, degree, program fields for the person.
@@ -222,8 +228,8 @@ const extractPersonInfoFrom = $ => {
 /**
  * @param {String} search - Search string.
  * @param {String} type - Peoples type: alumni - student - staff.
- * @param {(string\|number)} [limit=""] - Limit the number of people returned.
- * @param {(string\|number)} [start=0] - Return the people starting from start index.
+ * @param {(string|number)} [limit=""] - Limit the number of people returned.
+ * @param {(string|number)} [start=0] - Return the people starting from start index.
  */
 mysu.getPerson = async (search, type = 'student', limit = '', start = 0) => {
   const body = `${bodyOpen}<people xmlns="http://tempuri.org/">

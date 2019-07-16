@@ -1,34 +1,3 @@
-## Features
-
-- [**Babel**](https://babeljs.io/) - Write next generation JavaScript today.
-- [**Jest**](https://facebook.github.io/jest) - JavaScript testing framework used by Facebook.
-- [**ESLint**](http://eslint.org/) - Make sure you are writing a quality code.
-- [**Prettier**](https://prettier.io/) - Enforces a consistent style by parsing your code and re-printing it.
-- [**Flow**](https://flowtype.org/) - A static type checker for JavaScript used heavily within Facebook.
-- [**Travis CI**](https://travis-ci.org) - Automate tests and linting for every push or pull request.
-- [**Documentation**](http://documentation.js.org/) - A documentation system so good, you'll actually write documentation.
-- [**Standard Version**](https://github.com/conventional-changelog/standard-version) - Automate versioning and CHANGELOG generation.
-
-## Install
-
-The easiest way to use **nod** is through the Yeoman Generator.
-
-```sh
-$ npm install -g yo generator-nod
-$ yo nod
-```
-
-If you don't want to use the generator, you can also download or `git clone` this repo
-
-```sh
-$ git clone https://github.com/diegohaz/nod my-module
-$ cd my-module
-$ rm -rf .git
-$ npm install # or yarn
-```
-
-Just make sure to edit `package.json`, `README.md` and `LICENSE` files accordingly with your module's info.
-
 ## Commands
 
 ```sh
@@ -58,8 +27,10 @@ It'll automatically run `test`, `lint`, `docs`, `build`, generate `CHANGELOG.md`
   - [Parameters](#parameters)
 - [sucard](#sucard)
   - [Parameters](#parameters-1)
-- [extractInformationFrom](#extractinformationfrom)
+- [courseSchedule](#courseschedule)
   - [Parameters](#parameters-2)
+- [getPerson](#getperson)
+  - [Parameters](#parameters-3)
 
 ### authenticate
 
@@ -85,6 +56,25 @@ This function retrieves SuCard transaction records from MySU.
 - `username` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** SU-Net username
 
 Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** SuCard transaction record object with `meals`, `transports`, `prints` keys.
+
+### courseSchedule
+
+This function retrieves Course Schedule of a student.
+
+#### Parameters
+
+- `username` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** SU-Net username
+
+Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)** Object containing {courseCDN: courseTitle} fields.
+
+### getPerson
+
+#### Parameters
+
+- `search` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Search string.
+- `type` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Peoples type: alumni - student - staff. (optional, default `'student'`)
+- `limit` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Limit the number of people returned. (optional, default `""`)
+- `start` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Return the people starting from start index. (optional, default `0`)
 
 ## License
 
