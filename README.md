@@ -72,7 +72,7 @@ Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 #### Parameters
 
 - `search` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Search string.
-- `type` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Peoples type: alumni - student - staff. (optional, default `'student'`)
+- `type` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Peoples type: alumni - student - staff. (optional, default `"student"`)
 - `limit` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Limit the number of people returned. (optional, default `""`)
 - `start` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Return the people starting from start index. (optional, default `0`)
 
