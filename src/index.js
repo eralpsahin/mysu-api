@@ -141,7 +141,11 @@ const extractCourse = ($, day, allCourses) => {
     .children('item')
     .each((i, elem) => {
       const courseName = $(elem).text();
-      if (courseName.search('Recitation') === -1) {
+      if (
+        courseName.search('Recit') === -1 &&
+        courseName.search('Discus') === -1 &&
+        courseName.search('Lab') === -1
+      ) {
         let codeStarts = courseName.length - 1;
         // Slice title and CDN
         while (courseName.charCodeAt(codeStarts - 1) < 97) codeStarts -= 1;
@@ -201,7 +205,6 @@ const extractPersonInfoFrom = $ => {
     .each((i, elem) => {
       people[ids[i]].name = $(elem).text();
     });
-
   $('birthdayprefix')
     .children()
     .each((i, elem) => {
@@ -222,12 +225,13 @@ const extractPersonInfoFrom = $ => {
     .each((i, elem) => {
       people[ids[i]].program = $(elem).text();
     });
+
   return people;
 };
 
 /**
  * @param {String} search - Search string.
- * @param {String} type - Peoples type: alumni - student - staff.
+ * @param {String} [type="student"] - Peoples type: alumni - student - staff.
  * @param {(string|number)} [limit=""] - Limit the number of people returned.
  * @param {(string|number)} [start=0] - Return the people starting from start index.
  */
@@ -242,7 +246,7 @@ mysu.getPerson = async (search, type = 'student', limit = '', start = 0) => {
 
   const response = await instance.post('/people_v2.php', body, {
     transformResponse: data => {
-      const $ = cheerio.load(data);
+      const $ = cheerio.load(data, { xmlMode: true });
       return extractPersonInfoFrom($);
     }
   });
