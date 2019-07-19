@@ -1,6 +1,6 @@
 {
   "name": "mysu-api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Unofficial Sabanci University MySU Web API.",
   "license": "MIT",
   "repository": "eralpsahin/mysu-api",
