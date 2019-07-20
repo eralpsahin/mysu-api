@@ -1,8 +1,10 @@
 import { resolve } from 'path';
 import { config } from 'dotenv';
-import mysu from '../src/index';
+import MySU from '../src/index';
 
 config({ path: resolve(__dirname, '../.env') });
+
+const mysu = new MySU({ bypassCORS: false });
 
 test('Empty Credentials Authentication', async () => {
   expect(await mysu.authenticate()).toBe(1);
