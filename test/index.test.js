@@ -30,9 +30,15 @@ test('Retrieve SuCard Transaction History', async () => {
   expected.toHaveProperty('prints');
 });
 
-test('Retrieve Course Schedule', async () => {
+test('Retrieve Empty Schedule', async () => {
   const expected = expect(await mysu.courseSchedule('eralpsahin'));
   expected.toEqual({});
+});
+
+test('Retrieve Course Schedule', async () => {
+  const expected = expect(await mysu.courseSchedule('aaizakazi'));
+  expected.toHaveProperty('MATH306');
+  expected.not.toHaveProperty('.MATH306R');
 });
 
 test('Retrieve Person Information', async () => {
