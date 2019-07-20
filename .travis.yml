@@ -3,7 +3,7 @@ node_js:
   - '10'
 script:
   - yarn lint
-  - yarn coverage
+  - yarn test --coverage
 cache:
   - yarn
 after_success:
