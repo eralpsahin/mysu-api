@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "test": "jest",
-    "coverage": "npm test -- --coverage",
+    "coverage": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "postcoverage": "open-cli coverage/lcov-report/index.html",
     "lint": "eslint .",
     "docs": "documentation readme src --section=API",
