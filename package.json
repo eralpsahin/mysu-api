@@ -14,9 +14,8 @@
     "src"
   ],
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "coverage": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "postcoverage": "open-cli coverage/lcov-report/index.html",
     "lint": "eslint .",
     "docs": "documentation readme src --section=API",
     "clean": "rimraf dist",
@@ -52,6 +51,7 @@
     "@babel/preset-env": "7.4.5",
     "babel-eslint": "10.0.2",
     "babel-jest": "24.8.0",
+    "coveralls": "3.0.5",
     "documentation": "11.0.1",
     "dotenv": "8.0.0",
     "eslint": "6.0.0",
