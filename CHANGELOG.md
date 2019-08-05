@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.0](https://github.com/eralpsahin/mysu-api/compare/v0.1.0...v1.0.0) (2019-08-05)
+
+- Refactor getPerson endpoint to return an array of people.
+
 ### [0.0.7](https://github.com/eralpsahin/mysu-api/compare/v0.0.6...v0.0.7) (2019-07-20)
 
 - Add travis and test CI.

@@ -20,15 +20,16 @@ Refer to [Table of contents](#table-of-contents) for all available functions.
 ```js
 let res = await mysu.getPerson('eralp sahin', 'alumni');
 /*
-res => {
-  "eralpsahin": {
-    "photo": "http://suisimg.sabanciuniv.edu/photos/000018105237389123.jpg",
+res => [
+  {
+    "username": "eralpsahin",
     "name": "Eralp Şahin",
     "birthday": "2019-11-09",
-    "degree": "",
-    "program": ""
+    "photo": "http://suisimg.sabanciuniv.edu/photos/000018105237389123.jpg",
+    "degree": " ",
+    "program": " "
   }
-}
+]
 */
 ```
 
@@ -105,6 +106,8 @@ Returns **[Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/G
 - `type` **[String](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Peoples type: alumni - student - staff. (optional, default `"student"`)
 - `limit` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Limit the number of people returned. (optional, default `""`)
 - `start` **([string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String) \| [number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Return the people starting from start index. (optional, default `0`)
+
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array of person objects as in the example above.
 
 ## License
 

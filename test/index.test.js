@@ -43,11 +43,16 @@ test('Retrieve Course Schedule', async () => {
 
 test('Retrieve Person Information', async () => {
   const expected = expect(await mysu.getPerson('eralp sahin', 'alumni', 1, 0));
-  expected.toMatchObject({
-    eralpsahin: {
-      name: 'Eralp Şahin',
-      degree: ' ',
-      program: ' '
-    }
-  });
+  expected.toEqual(
+    expect.arrayContaining([
+      {
+        username: 'eralpsahin',
+        name: 'Eralp Şahin',
+        birthday: '2019-11-09',
+        photo: 'http://suisimg.sabanciuniv.edu/photos/000018105237389123.jpg',
+        degree: ' ',
+        program: ' '
+      }
+    ])
+  );
 });

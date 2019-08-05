@@ -101,8 +101,8 @@ const extractCourse = ($, day, allCourses) => {
  * Helper function for parsing person information.
  * @private
  * @param {Cheerio} $ - Cheerio object with loaded XML.
- * @returns {Object} Object containing all the people with username as key
- * and name, birthday, photo, degree, program fields for the person.
+ * @returns {Array} Array of person objects containing username,
+ * name, birthday, photo, degree, program fields for the person.
  */
 const extractPersonInfoFrom = $ => {
   const ids = [];
@@ -142,7 +142,16 @@ const extractPersonInfoFrom = $ => {
       people[ids[i]].program = $(elem).text();
     });
 
-  return people;
+  const usernames = Object.keys(people);
+  const peopleArr = [];
+  for (let i = 0; i < usernames.length; i += 1) {
+    const username = usernames[i];
+    peopleArr.push({
+      username,
+      ...people[username]
+    });
+  }
+  return peopleArr;
 };
 
 class MySU {
@@ -239,6 +248,7 @@ class MySU {
    * @param {String} [type="student"] - Peoples type: alumni - student - staff.
    * @param {(string|number)} [limit=""] - Limit the number of people returned.
    * @param {(string|number)} [start=0] - Return the people starting from start index.
+   * @returns {Array} Array of person objects as in the example above.
    */
   async getPerson(search, type = 'student', limit = '', start = 0) {
     const body = `${bodyOpen}<people xmlns="http://tempuri.org/">
