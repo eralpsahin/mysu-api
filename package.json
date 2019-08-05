@@ -1,6 +1,6 @@
 {
   "name": "mysu-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unofficial Sabanci University MySU Web API.",
   "license": "MIT",
   "repository": "eralpsahin/mysu-api",
@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "test": "jest --coverage",
-    "coverage": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "coverage": "jest --coverage --coverageReporters=text-lcov | ./node_modules/.bin/coveralls",
     "lint": "eslint .",
     "docs": "documentation readme src --section=API",
     "clean": "rimraf dist",
