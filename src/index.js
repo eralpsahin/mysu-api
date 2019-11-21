@@ -269,4 +269,4 @@ class MySU {
   }
 }
 
-export default MySU;
+module.exports =  MySU;
