@@ -269,4 +269,4 @@ class MySU {
   }
 }
 
-module.exports =  MySU;
+module.exports = MySU;
