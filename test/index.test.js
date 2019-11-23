@@ -37,7 +37,6 @@ test('Retrieve Empty Schedule', async () => {
 
 test('Retrieve Course Schedule', async () => {
   const expected = expect(await mysu.courseSchedule('aaizakazi'));
-  expected.toHaveProperty('MATH306');
   expected.not.toHaveProperty('.MATH306R');
 });
 
